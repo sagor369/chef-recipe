@@ -7,11 +7,11 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className='max-w-7xl mx-auto border'>
-      <div className='bg-gray-400 bg-cover text-white bg-blend-multiply' style={{backgroundImage: `url(${bgLogo})` , }}>
+    
+      <div className=' max-w-7xl mx-auto borderbg-gray-600 bg-cover bg-fixed bg-opacity-50  bg-blend-multiply ' style={{backgroundImage: `url(${bgLogo})` , }}>
      <Header></Header>
 
-      </div>
+      
      <Outlet></Outlet>
     </div>
   )

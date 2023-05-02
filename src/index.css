@@ -5,3 +5,6 @@
 .nav_style{
     @apply ml-8 text-2xl font-bold 
 }
+.img-contol{
+    @apply h-full w-full
+}
