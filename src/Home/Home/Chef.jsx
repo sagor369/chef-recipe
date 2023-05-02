@@ -1,19 +1,43 @@
 import { Card } from "flowbite-react";
-import React from "react";
-import img_url from "../../assets/chef.jpg";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 
-const Chef = () => {
+const Chef = ({ chef }) => {
+  const { name, id, img_url, experience, total_recipe, rating } = chef;
+  console.log(rating);
+
   return (
-    <div >
-        <img src={img_url} alt="" />
-        <button className='ml-8 bg-orange-700 py-2 px-3 rounded ' >
-            <Link to='/chef/id'> Details</Link>
+    <div className="border rounded p-4 bg-white shadow-xl">
+      <div className="w-full h-96 ">
+        <img className="h-full w-full" src={img_url} alt="" />
+      </div>
+      <h2 className="text-2xl mb-2 bg-orange-300 py-3 font-bold uppercase text-center  ">
+        {name}
+      </h2>
+
+      <p>
+        
+        Experience: <span className="font-bold">{experience}</span>
+      </p>
+      <p>
+        Total Recipes: <span className="font-bold">
+          {total_recipe} recipe
+        </span>
+      </p>
+      <p>
+        Ratings: <span className="font-bold">
+          {rating} 
+        </span>
+      </p>
+      <div className="flex justify-between items-center ">
+        <button className=" bg-orange-700 text-white py-2 px-10 rounded ">
+          <Link to={`/chef/${id}`}> Details</Link>
         </button>
-        <button className='ml-8 border-orange-700 py-2 px-3 rounded ' >
-            <Link to= '/detail/id'> Recipe</Link>
+        <button className=" border-2 text-orange-500 border-orange-700 py-2 px-10 rounded ">
+          <Link to="/detail/id"> Recipe</Link>
         </button>
-     
+      </div>
     </div>
   );
 };

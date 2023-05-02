@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Banner from './Home/Home/Banner.jsx';
 import Home from './Home/Home/Home.jsx';
+import ChefDetail from './ChefDetails/ChefDetail.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,10 @@ const router = createBrowserRouter([
         loader: () => fetch('https://chef-server-sagor369.vercel.app/chef')
       },
       {
-        
+        path: 'chef/:id',
+        element: <ChefDetail></ChefDetail>,
+        loader: ({params})=> fetch(`https://chef-server-sagor369.vercel.app/chef/${params.id}`)
+      
       }
     ]
 

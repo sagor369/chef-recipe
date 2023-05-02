@@ -1,15 +1,9 @@
 import React from 'react';
 import chef from '../../assets/banner.jpg'
-import { useLoaderData } from 'react-router-dom';
 
 const Banner = () => {
-    const data = useLoaderData()
-    console.log(data)
-
-    return (
-        
-
-        <div className=' h-96 grid grid-cols-2 pl-20 justify-center mt-16 items-center gap-6 bg-orange-700 bg-opacity-50'>
+        return (
+                <div className=' h-96 grid grid-cols-2 pl-20 justify-center mt-16 items-center gap-6 bg-orange-700 bg-opacity-50'>
             <div className='h-full pt-6 text-white'>
                 <h2 className='text-4xl capitalize text-opacity-50 font-bold text-center pb-4 '>
                     Wellcome to My Food village restaurants

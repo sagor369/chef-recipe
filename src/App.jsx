@@ -9,9 +9,7 @@ function App() {
   return (
     
       <div className=' max-w-7xl mx-auto borderbg-gray-600 bg-cover bg-fixed bg-opacity-50  bg-blend-multiply ' style={{backgroundImage: `url(${bgLogo})` , }}>
-     <Header></Header>
-
-      
+     <Header></Header>      
      <Outlet></Outlet>
     </div>
   )
