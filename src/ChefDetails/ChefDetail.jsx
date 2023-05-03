@@ -15,7 +15,7 @@ const ChefDetail = () => {
   const { restaurants, specialty, training, awards } = details;
   console.log(chef);
   return (
-    <div className="w-6/5 bg-orange-400 bg-opacity-75 mt-20">
+    <div className="w-6/5 bg-gray-600 bg-opacity-75 mt-20">
       <h1 className="text-4xl font-bold text-center py-4 bg-gray-600 bg-opacity-70 text-white">
         Details of {name}
       </h1>
@@ -77,8 +77,7 @@ const ChefDetail = () => {
           </div>
         </div>
         <button className="w-full py-4 text-white text-xl bg-orange-700">
-          {" "}
-          <Link to={`/recipe/${id}`}> Recipe</Link>{" "}
+          <Link to={`/recipe/${id}`}> Recipe</Link>
         </button>
       </div>
     </div>
