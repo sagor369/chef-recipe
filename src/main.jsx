@@ -7,12 +7,13 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Banner from './Home/Home/Banner.jsx';
 import Home from './Home/Home/Home.jsx';
 import ChefDetail from './ChefDetails/ChefDetail.jsx';
 import Foods from './Food/Foods.jsx';
 import Login from './Auth/Login.jsx'
 import Register from './Auth/Register.jsx'
+import PriveteRoute from './PrivetRout/PriveteRoute.jsx'
+import ContexRoute from './PrivetRout/ContexRoute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -26,13 +27,13 @@ const router = createBrowserRouter([
       },
       {
         path: 'chef/:id',
-        element: <ChefDetail></ChefDetail>,
+        element: <ContexRoute><ChefDetail></ChefDetail></ContexRoute>,
         loader: ({params})=> fetch(`https://chef-server-sagor369.vercel.app/chef/${params.id}`)
       
       },
       {
         path: 'recipe/:id',
-        element: <Foods></Foods>,
+        element: <ContexRoute><Foods></Foods></ContexRoute>,
         loader: ({params}) => fetch(`https://chef-server-sagor369.vercel.app/recipe/${params.id}`)
 
       }
@@ -53,4 +54,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}/>)
+  <PriveteRoute>
+    <RouterProvider router={router}/>
+  </PriveteRoute>
+    )

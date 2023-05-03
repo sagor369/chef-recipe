@@ -5,7 +5,7 @@ import LazyLoad from "react-lazy-load";
 
 const Chef = ({ chef }) => {
   const { name, id, img_url, experience, total_recipe, rating } = chef;
-  console.log(rating);
+  // console.log(rating);
   const [rat, setRat] = useState(rating)
 
   return (

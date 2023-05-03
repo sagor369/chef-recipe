@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Header from "../Home/Home/Header";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { AuthContext } from "../PrivetRout/PriveteRoute";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { FaGoogle, FaGithub } from 'react-icons/fa'
+
 
 const Login = () => {
+    const { handleSignIn, githubSign, googleSign } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const [accepted, setAccepted] = useState(false)
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    console.log(from)
 
     
     const handleLogin = event =>{
@@ -10,7 +20,22 @@ const Login = () => {
         const form = event.target
         const email = form.email.value 
         const password = form.password.value
-        console.log(email , password)
+
+        handleSignIn(email, password)
+        .then(result =>{
+            const user = result.user
+            navigate(from, { replace: true })
+        })
+        .catch(error =>{
+            const errorMessage = error.message 
+            const errorCord = error.cord
+        })
+        
+        }
+
+        
+    const handleAccepted = event =>{
+        setAccepted(event.target.checked)
         
     }
 
@@ -39,10 +64,12 @@ const Login = () => {
             <TextInput id="password1" name="password" type="password" required={true} />
           </div>
           <div className="flex items-center gap-2">
-            <Checkbox id="remember" name="select" />
+            <Checkbox onClick={handleAccepted} id="remember" name="select" />
             <Label htmlFor="remember">Remember me</Label>
           </div>
-          <Button type="submit">Submit</Button>
+            <p><small>create an new account  <Link className="text-blue-500" to='/register'> Sign up</Link> </small></p>
+            
+          <Button disabled={!accepted}  type="submit">Submit</Button>
         </form>
       </div>
     </div>
