@@ -6,7 +6,7 @@ const Foods = () => {
     const foods = useLoaderData()
     console.log(foods)
     return (
-        <div className='grid grid-cols-3 gap-4 mx-4'>
+        <div className='grid grid-col-1 md:grid-cols-3 gap-4 mx-4'>
             
 
             {

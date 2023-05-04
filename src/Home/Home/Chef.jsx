@@ -9,7 +9,7 @@ const Chef = ({ chef }) => {
   const [rat, setRat] = useState(rating)
 
   return (
-    <div className="border rounded p-4 bg-white shadow-xl">
+    <div className="border w-3/4 md:w-full mx-center rounded p-4 bg-white shadow-xl">
       <div >
         <LazyLoad className="w-full h-96 " threshold={0.99}>
          <img className="h-full w-full" src={img_url} alt="" />
