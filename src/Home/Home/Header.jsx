@@ -59,7 +59,7 @@ const Header = () => {
           </NavLink>
         </div>
 
-        <div className="ml-auto">
+        <div className="ml-auto pr-6">
           {user ? (
             <div className="flex items-center gap-6">
               <button
