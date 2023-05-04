@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Error from "./Error";
 
 
 const Register = () => {
@@ -13,6 +14,7 @@ const Register = () => {
   const [accepted, setAccepted] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState('')
 
 
   // success toast function 
@@ -33,8 +35,8 @@ const Register = () => {
 
     // error toast function 
 
-  const notify = () =>
-    toast.error(error, {
+  const notify = (err) =>
+    toast.error(err, {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -58,22 +60,22 @@ const Register = () => {
     console.log(name, photo)
 
     if (password.length < 8) {
-      setError("Password must not contain Whitespaces.");
-      notify();
+      // setError("Password must not contain Whitespaces.");
+      notify("Password must not contain Whitespaces.");
       return;
     } else if (!/^(?=.*[A-Z]).*$/.test(password)) {
-      setError("Password must have at least one Uppercase Character.");
-      notify();
+      // setError("Password must have at least one Uppercase Character.");
+      notify("Password must have at least one Uppercase Character.");
       return;
     } else if (!/^(?=.*[0-9]).*$/.test(password)) {
-      setError("Password must contain at least one Digit.");
-      notify();
+      // setError("Password must contain at least one Digit.");
+      notify("Password must contain at least one Digit.");
       return;
     } else if (
       !/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/.test(password)
     ) {
-      setError("Password must contain at least one Special Symbol.");
-      notify();
+      // setError("Password must contain at least one Special Symbol.");
+      notify("Password must contain at least one Special Symbol.");
       return;
     } else {
       handleSignUp(email, password)
@@ -85,6 +87,8 @@ const Register = () => {
         .catch((error) => {
           const errorMessage = error.message;
           const errorCord = error.code;
+          setError(errorCord)
+          setMessage(errorMessage)
         });
 
 
@@ -118,6 +122,8 @@ const Register = () => {
       .catch((error) => {
         const errorMessage = error.message;
         const errorCord = error.code;
+        setError(errorCord)
+          setMessage(errorMessage)
       });
   };
 
@@ -135,12 +141,19 @@ const Register = () => {
       .catch((error) => {
         const errorMessage = error.message;
         const errorCord = error.code;
+        setError(errorCord)
+          setMessage(errorMessage)
       });
   };
 
   return (
     <div className="bg-gray-500 pb-10">
       <Header></Header>
+
+        {
+          message && <Error message= {message} error = {error}></Error>
+        }    
+
       <div className="bg-white w-2/5 mx-auto p-4 my-20 rounded ">
         <form className="flex flex-col gap-4" onSubmit={handleRegister}>
           <div>
