@@ -3,11 +3,13 @@ import Header from "../Home/Home/Header";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import { AuthContext } from "../PrivetRout/PriveteRoute";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { FaGoogle, FaGithub } from 'react-icons/fa'
+import Error from "./Error";
 
 
 const Login = () => {
-    const { handleSignIn, githubSign, googleSign } = useContext(AuthContext)
+    const { handleSignIn } = useContext(AuthContext)
+    const [error , setError] = useState('')
+    const [message , setMessage] = useState('')
     const navigate = useNavigate()
     const [accepted, setAccepted] = useState(false)
     const location = useLocation()
@@ -28,7 +30,11 @@ const Login = () => {
         })
         .catch(error =>{
             const errorMessage = error.message 
-            const errorCord = error.cord
+            const errorCord = error.code
+            console.log(error)
+            setError(errorCord)
+            setMessage(errorMessage)
+            
         })
         
         }
@@ -43,6 +49,12 @@ const Login = () => {
   return (
     <div className="bg-gray-500 pb-10">
       <Header></Header>
+      {
+        error &&  <Error error= {error} message={message}></Error>
+
+      }
+      {
+        !error && 
       <div className="bg-white w-2/5 mx-auto p-4 my-20 rounded ">
         <form className="flex flex-col gap-4" onSubmit={handleLogin}>
           <div>
@@ -72,6 +84,7 @@ const Login = () => {
           <Button disabled={!accepted}  type="submit">Submit</Button>
         </form>
       </div>
+      }
     </div>
   );
 };

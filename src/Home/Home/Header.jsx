@@ -7,13 +7,7 @@ import { FaUserCircle } from "react-icons/fa";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  // const [name , setName] = useState('')
-  // const [photo , setPhoto] = useState(photoURL)
-  // console.log(user)
-  // if(user){
-  //   const { displayName } = user
-  //   setName(displayName)
-  // }
+  
 
   return (
     <div className="grid grid-cols-4 bg-white pl-20 justify-center items-center">
@@ -53,7 +47,7 @@ const Header = () => {
             className={({ isActive }) =>
               isActive ? "active underline nav_style " : "nav_style"
             }
-            to="/"
+            to="/blog"
           >
             Blog
           </NavLink>

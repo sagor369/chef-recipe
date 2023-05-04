@@ -7,14 +7,18 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const Register = () => {
-  const { handleSignUp, githubSign, googleSign } = useContext(AuthContext);
+  const { handleSignUp, githubSign, googleSign, } = useContext(AuthContext);
   const [accepted, setAccepted] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  const  sucToast = () =>
-    toast.success(success, {
+
+  // success toast function 
+
+  const sucToast = (name) =>
+    toast.success(name, {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -25,7 +29,12 @@ const Register = () => {
       theme: "light",
     });
 
-    const notify = () =>toast.error(error, {
+
+
+    // error toast function 
+
+  const notify = () =>
+    toast.error(error, {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -34,60 +43,70 @@ const Register = () => {
       draggable: true,
       progress: undefined,
       theme: "light",
-      });
+    });
+
+
+    // email & password reagistation section
 
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    const name = form.name.value
+    const photo = form.photo.value
+    console.log(name, photo)
 
-     
-    
-     if (password.length < 8) {
+    if (password.length < 8) {
       setError("Password must not contain Whitespaces.");
       notify();
       return;
-    } 
-    
-    else if (!/^(?=.*[A-Z]).*$/.test(password)) {
+    } else if (!/^(?=.*[A-Z]).*$/.test(password)) {
       setError("Password must have at least one Uppercase Character.");
       notify();
       return;
-    } 
-    
-    else if (!/^(?=.*[0-9]).*$/.test(password)) {
+    } else if (!/^(?=.*[0-9]).*$/.test(password)) {
       setError("Password must contain at least one Digit.");
       notify();
       return;
-    }
-     
-    else if (
+    } else if (
       !/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/.test(password)
     ) {
       setError("Password must contain at least one Special Symbol.");
       notify();
       return;
-    }
+    } else {
+      handleSignUp(email, password)
+        .then((result) => {
+          const user = result.user;
+          // setSuccess("Registation successfull");
+          sucToast("Registation successfull");
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          const errorCord = error.code;
+        });
 
-    else{
-    handleSignUp(email, password)
-      .then((result) => {
-        const user = result.user;
-        setSuccess("Registation successfull")
-        sucToast();
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        const errorCord = error.code;
-      });
-      
-    form.reset();}
+
+      form.reset();
+
+        
+
+    }
   };
+
+
+
+
+  // button disable function
 
   const handleAccepted = (event) => {
     setAccepted(event.target.checked);
   };
+
+
+
+  // google signup section
 
   const googleUser = () => {
     googleSign()
@@ -101,6 +120,11 @@ const Register = () => {
         const errorCord = error.code;
       });
   };
+
+
+
+  // github signup section
+
   const githubUser = () => {
     githubSign()
       .then((result) => {
@@ -131,7 +155,7 @@ const Register = () => {
               required={true}
             />
           </div>
-          
+
           <div>
             <div className="mb-2 block">
               <Label htmlFor="email1" value="Your email" />
@@ -161,7 +185,7 @@ const Register = () => {
             </div>
             <input
               className="border-none"
-              id="password1"
+              id="photo"
               name="photo"
               type="file"
             />

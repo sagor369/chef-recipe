@@ -14,6 +14,7 @@ import Login from './Auth/Login.jsx'
 import Register from './Auth/Register.jsx'
 import PriveteRoute from './PrivetRout/PriveteRoute.jsx'
 import ContexRoute from './PrivetRout/ContexRoute.jsx'
+import Blog from './Blog/Blog.jsx'
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         element: <ContexRoute><Foods></Foods></ContexRoute>,
         loader: ({params}) => fetch(`https://chef-server-sagor369.vercel.app/recipe/${params.id}`)
 
+      },
+      {
+        path: 'blog',
+        element: <Blog></Blog>
       }
     ]
 

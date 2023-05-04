@@ -23,6 +23,7 @@ const FooterNav = () => {
               <Footer.Link href="#">Privacy Policy</Footer.Link>
               <Footer.Link href="#">Licensing</Footer.Link>
               <Footer.Link href="#">Contact</Footer.Link>
+              <Footer.Link href="#blog">Blog</Footer.Link>
             </Footer.LinkGroup>
           </div>
           <Footer.Divider />

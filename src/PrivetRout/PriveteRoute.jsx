@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
-import {GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth'
+import {GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth'
 
 
  export const AuthContext = createContext()
@@ -13,6 +13,8 @@ import {GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, 
     const githubProgider = new GithubAuthProvider()
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [photo, setPhoto] = useState('')
+    const [ name, setName ] = useState('')
    
     const handleSignIn = (email, password) =>
     {
@@ -45,6 +47,7 @@ import {GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, 
    
     useEffect(()=>{
        const unsubscribe = onAuthStateChanged(auth, logUser => {
+
            setUser(logUser);
            setLoading(false);
        })
@@ -54,7 +57,7 @@ import {GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, 
        }
    }, [])
    
-//    console.log(user)
+   console.log(user)
        const authInfo={
            handleSignIn,
            handleSignUp,
@@ -62,7 +65,7 @@ import {GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, 
            githubSign,
            loading,
            user,
-           logOut
+           logOut,
            
    
        }
