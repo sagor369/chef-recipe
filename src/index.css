@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .nav_style{
-    @apply ml-8 text-2xl font-bold 
+    @apply ml-8 text-2xl font-bold mb-4 md:mb-0 
 }
 .img-contol{
     @apply h-full w-full

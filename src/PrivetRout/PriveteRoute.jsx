@@ -13,8 +13,7 @@ import {GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, 
     const githubProgider = new GithubAuthProvider()
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [photo, setPhoto] = useState('')
-    const [ name, setName ] = useState('')
+    
    
     const handleSignIn = (email, password) =>
     {

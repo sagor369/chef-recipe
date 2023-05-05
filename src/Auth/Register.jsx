@@ -78,11 +78,12 @@ const Register = () => {
       notify("Password must contain at least one Special Symbol.");
       return;
     } else {
-      handleSignUp(email, password)
+      handleSignUp(email, password) 
         .then((result) => {
           const user = result.user;
           // setSuccess("Registation successfull");
           sucToast("Registation successfull");
+          setError('')
         })
         .catch((error) => {
           const errorMessage = error.message;
