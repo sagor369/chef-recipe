@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../Home/Home/Header";
+import FooterNav from "../Home/Footer";
 
 const Blog = () => {
   return (
@@ -105,6 +106,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
+      <FooterNav></FooterNav>
     </div>
   );
 };

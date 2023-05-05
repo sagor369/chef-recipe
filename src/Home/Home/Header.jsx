@@ -51,7 +51,7 @@ const Header = () => {
               className={({ isActive }) =>
                 isActive ? "active underline nav_style " : "nav_style"
               }
-              to="/favorite"
+              to="/"
             >
               Favorite Recipe
             </NavLink>
