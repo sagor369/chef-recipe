@@ -21,8 +21,8 @@ const Header = () => {
       </div>
 
       <div
-        className={`md:static duration-500 bg-white pb-6  pr-10 md:pr-0 absolute md:flex ${
-          open ? "top-20" : "-top-96 "
+        className={`md:static duration-500 bg-slate-50  pb-6  pr-10 md:pr-0 absolute md:flex ${
+          !open ? "top-20 left-0 rounded-b-lg" : "-top-96 "
         } `}
       >
         <div className="md:flex ">
@@ -41,9 +41,9 @@ const Header = () => {
               className={({ isActive }) =>
                 isActive ? "active underline nav_style " : "nav_style"
               }
-              to="/location"
+              to="/recipe"
             >
-              Locations
+              Recipe
             </NavLink>
           </div>
           <div>
@@ -51,9 +51,9 @@ const Header = () => {
               className={({ isActive }) =>
                 isActive ? "active underline nav_style " : "nav_style"
               }
-              to="/contact"
+              to="/favorite"
             >
-              Contacts
+              Favorite Recipe
             </NavLink>
           </div>
           <div>
