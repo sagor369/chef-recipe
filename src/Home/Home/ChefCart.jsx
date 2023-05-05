@@ -2,6 +2,7 @@ import React from "react";
 import Chef from "./Chef";
 import { useLoaderData } from "react-router-dom";
 import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import { Button, Label, TextInput, Textarea } from "flowbite-react";
 
 const ChefCart = () => {
   const data = [
@@ -23,7 +24,9 @@ const ChefCart = () => {
       </div>
 
       <div className=" bg-white py-10 my-10">
-        <h1 className="text-center font-bold text-orange-500  py-4 text-3xl border-b-2">Chef Ranking charts </h1>
+        <h1 className="text-center font-bold text-orange-500  py-4 text-3xl border-b-2">
+          Chef Ranking charts
+        </h1>
         <div className=" bg-white md:h-96  grid justify-center items-center md:grid-cols-2 grid-cols-1 gap-4">
           <div className="border-r-4 pl-20">
             <li className="nsme">JOHN SMITH</li>
@@ -43,30 +46,32 @@ const ChefCart = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded w-3/4 mx-auto p-4 my-6">
-        <h1 className="text-orange-500 text-2xl font-bold text-center uppercase py-4">
-          heire chef blog
+      <div className="bg-white rounded bg-opacity-90 mx-6 px-4 p-4 my-6">
+        <h1 className="text-center font-bold text-orange-500 mb-4 py-4 text-3xl border-red-300 border-b-2">
+          Feedback Area
         </h1>
-        <p>
-          Here you can take a cook for any occasion and the cooks here are
-          properly trained and their food recipes are very good. If you want,
-          you can make us cook from any country. Our chefs have not performed
-          abroad, they have many specialist dishes. Here you will get any kind
-          of cook anytime without any payment
-        </p>
-      </div>
-
-      <div className="bg-white rounded w-3/4 mx-auto p-4 mb-6">
-        <h2 className="text-orange-500 uppercase text-2xl font-bold text-center ">
-          Delivery Blog
-        </h2>
-        <p>
-          You can order any food from here, moreover, we provide home delivery
-          from here. Home delivery charges are applicable. From there, you can
-          order any food from home and abroad. The quality of our food is very
-          good. We provide home delivery, we do not provide home delivery
-          outside Dhaka, moreover, some of our showrooms are outside Dhaka.
-        </p>
+        <div id="textarea ">
+          <div className="mb-2 block">
+            <Label htmlFor="comment" value="Feedback your comment " />
+          </div>
+          <Textarea
+            id="comment"
+            placeholder="Leave a comment..."
+            required={true}
+            rows={4}
+          />
+          <TextInput
+            id="email4"
+            type="email"
+            // icon={HiMail}
+            // rightIcon={HiMail}
+            placeholder="name@flowbite.com"
+            required={true}
+          />
+        </div>
+        <div className="py-4">
+          <Button size="xl">Extra large</Button>
+        </div>
       </div>
     </>
   );
