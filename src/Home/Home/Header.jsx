@@ -8,7 +8,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
-  console.log(open);
+  // console.log(open);
 
   return (
     <div className=" py-6 flex px-6 md:pl-10 md:pr-6 bg-white  justify-between items-center">

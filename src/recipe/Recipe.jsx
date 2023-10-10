@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import RecipeDetail from './RecipeDetail';
 import bgLogo from "../assets/bg_logo.jpg";
@@ -8,13 +8,16 @@ import FooterNav from '../Home/Footer';
 
 const Recipe = () => {
     const recipe = useLoaderData()
-    console.log(recipe)
+    // let [totalFood, setTotalFood] =useState([]) 
+    // recipe.map(data => {setTotalFood=[...totalFood, data.food_items
+    // ]})
+    // console.log(totalFood)
     return (
         <div  className=" max-w-7xl mx-auto borderbg-gray-600 bg-cover bg-fixed bg-opacity-50  bg-blend-multiply "
         style={{ backgroundImage: `url(${bgLogo})` }}>
             <Header></Header>
 
-        <div className='grid grid-col-1 md:grid-cols-3 gap-4 mx-4'>
+        <div className='mb-10'>
             {
                 recipe.map(foods => <RecipeDetail
                      key={foods.id}

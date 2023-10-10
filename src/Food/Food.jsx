@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Food = ({ food }) => {
   const { name, id, img_url, price } = food;
-  console.log(name, id);
+  // console.log(name, id);
   const [dis, setDis] = useState(false)
 
   const disableBtn = (e) => {
@@ -14,14 +14,14 @@ const Food = ({ food }) => {
   }
 
   return (
-    <div className="bg-white w-3/4 md:w-full rounded mt-20  shadow p-4">
+    <div className="bg-white w-3/4 md:w-full rounded mt-6 shadow p-4">
       <div>
         <LazyLoad className="h-64" threshold={0.99}>
           <img className="h-64 w-full rounded-t-lg" src={img_url} alt="" />
         </LazyLoad>
       </div>
       <div className="bg-orange-300 rounded-b-lg pl-4 pb-3 bg-opacity-70">
-        <h3 className=" text-2xl font-bold "> {name}</h3>
+        <h3 className=" text-2xl font-bold h-16"> {name}</h3>
         <p>
           <span className=" text-xl font-bold">Price: </span> ${price}
         </p>
